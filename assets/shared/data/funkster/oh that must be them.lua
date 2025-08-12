@@ -16,8 +16,33 @@ Context as of why I called this as "oh that must be them":
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
+isCountdownStarted = false
+pressedAnyButtons = false
+ringCount = 0
+ringCountCheck = false
+startGameFix = false
+
+runningSpeed = 0.1
+minuteNum = 0
+secondNum = 0
+debugNum = 9999
+tenSecondPassed = false
+
+function onStartCountdown()
+	if not isCountdownStarted then
+	isCountdownStarted = true
+	runTimer('opacity here', 1)
+	runTimer('open game', 3.5)
+	return Function_Stop;
+	else
+	return Function_Continue;
+	end
+end
+
 function onCreate()
-        setPropertyFromClass('flixel.FlxG', 'mouse.visible', true);
+    setPropertyFromClass('flixel.FlxG', 'mouse.visible', false);
+	setProperty('skipCountdown', true)
+	
 	runHaxeCode([[
 		FlxG.mouse.unload();
 		FlxG.log.add("Angry Birds Cursor" + Paths.image("ab_cursor")); // amogusgameALT i'm looking at you 
@@ -127,6 +152,178 @@ scaleObject('PSYCH YOU SUCK', 1, 1)
 addLuaSprite('PSYCH YOU SUCK', true)
 setObjectCamera('PSYCH YOU SUCK', 'other')
 setProperty('PSYCH YOU SUCK.alpha', 0)
+
+makeLuaSprite('titlescreenBoot', 'breitbart/titleScreen/boot splash screen', 0, 0)
+addLuaSprite('titlescreenBoot', true)
+scaleObject('titlescreenBoot', 1.2, 1.2)
+setObjectCamera('titlescreenBoot', 'other')
+screenCenter('titlescreenBoot')
+--setProperty('titlescreenBoot.alpha', 0)
+
+makeLuaSprite('titlescreenMain', 'breitbart/titleScreen/titlescreen_back', 0, 0)
+addLuaSprite('titlescreenMain', true)
+setObjectCamera('titlescreenMain', 'other')
+setProperty('titlescreenMain.alpha', 0)
+
+makeLuaSprite('titlescreenStart', 'breitbart/titleScreen/pressstart1', 0, 0)
+addLuaSprite('titlescreenStart', true)
+setObjectCamera('titlescreenStart', 'other')
+setProperty('titlescreenStart.alpha', 0)
+
+makeLuaSprite('titlescreenStart2', 'breitbart/titleScreen/pressstart2', 0, 0)
+addLuaSprite('titlescreenStart2', true)
+setObjectCamera('titlescreenStart2', 'other')
+setProperty('titlescreenStart2.alpha', 0)
+
+setPropertyFromClass('openfl.Lib', 'application.window.opacity', 0)
+end
+
+function spawnCharacter()
+makeLuaSprite('bgTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 stage bg', 0, -250)
+setProperty('bgTemp.antialiasing', false)
+scaleObject('bgTemp', 0.75, 0.75)
+addLuaSprite('bgTemp', true)
+setObjectCamera('bgTemp', 'other')
+--setProperty('bgTemp.alpha', 0)
+
+-- BREITBART SPRITES
+makeLuaSprite('sonicMoving', 'breitbart/gameplaySprites/sonic/individual frames/walkframe1', 508, 208)
+setProperty('sonicMoving.antialiasing', false)
+scaleObject('sonicMoving', 0.75, 0.75)
+addLuaSprite('sonicMoving', true)
+setObjectCamera('sonicMoving', 'other')
+setProperty('sonicMoving.flipX', true)
+
+makeLuaSprite('sonicMovingWalk', 'breitbart/gameplaySprites/sonic/individual frames/walkframe1', 508, 208)
+setProperty('sonicMovingWalk.antialiasing', false)
+scaleObject('sonicMovingWalk', 0.75, 0.75)
+addLuaSprite('sonicMovingWalk', true)
+setObjectCamera('sonicMovingWalk', 'other')
+setProperty('sonicMovingWalk.flipX', true)
+setProperty('sonicMovingWalk.visible', false)
+
+makeLuaSprite('sonicMoving2', 'breitbart/gameplaySprites/sonic/individual frames/walkframe2', 508, 208)
+setProperty('sonicMoving2.antialiasing', false)
+scaleObject('sonicMoving2', 0.75, 0.75)
+addLuaSprite('sonicMoving2', true)
+setObjectCamera('sonicMoving2', 'other')
+setProperty('sonicMoving2.flipX', true)
+setProperty('sonicMoving2.visible', false)
+
+makeLuaSprite('sonicMoving3', 'breitbart/gameplaySprites/sonic/individual frames/walkframe3 (unused)', 508, 208)
+setProperty('sonicMoving3.antialiasing', false)
+scaleObject('sonicMoving3', 0.75, 0.75)
+addLuaSprite('sonicMoving3', true)
+setObjectCamera('sonicMoving3', 'other')
+setProperty('sonicMoving3.flipX', true)
+setProperty('sonicMoving3.visible', false)
+-- screenCenter('sonicMoving')
+-- debugPrint("Y: "..getProperty('sonicMoving.y'))
+-- debugPrint("X: "..getProperty('sonicMoving.x'))
+--setProperty('sonicMoving.alpha', 0)
+doTweenY('startDown', 'sonicMoving', 368, 1, 'sineIn')
+
+makeLuaSprite('sonicBall', 'breitbart/gameplaySprites/sonic/individual frames/jump/jumpball1', 508, 208)
+setProperty('sonicBall.antialiasing', false)
+scaleObject('sonicBall', 0.75, 0.75)
+addLuaSprite('sonicBall', true)
+setObjectCamera('sonicBall', 'other')
+-- setProperty('sonicBall.flipX', true)
+
+makeLuaSprite('sonicBall2', 'breitbart/gameplaySprites/sonic/individual frames/jump/jumpball2', 508, 208)
+setProperty('sonicBall2.antialiasing', false)
+scaleObject('sonicBall2', 0.75, 0.75)
+addLuaSprite('sonicBall2', true)
+setObjectCamera('sonicBall2', 'other')
+-- setProperty('sonicBall.flipX', true)
+-- BREITBART SPRITES
+
+makeLuaSprite('ringCollect', 'breitbart/gameplaySprites/ring/spin1', 1000, 450)
+setProperty('ringCollect.antialiasing', false)
+scaleObject('ringCollect', 5, 5)
+addLuaSprite('ringCollect', true)
+setObjectCamera('ringCollect', 'other')
+--setProperty('ringCollect.alpha', 0)
+
+makeLuaSprite('black1', 'black1', getProperty('ringCollect.x'), getProperty('ringCollect.y'));
+makeGraphic('black1', 1, 16, 'FF0000')
+addLuaSprite('black1', true);
+scaleObject('black1', 5, 5)
+setObjectCamera('black1', 'other');
+
+makeLuaSprite('tileTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 ground tile', 0, 625)
+setProperty('tileTemp.antialiasing', false)
+scaleObject('tileTemp', 5, 0.5)
+addLuaSprite('tileTemp', true)
+setObjectCamera('tileTemp', 'other')
+--setProperty('tileTemp.alpha', 0)
+
+makeLuaSprite('ringCollectHUD', 'breitbart/gameplaySprites/ring/spin1', 15, 15)
+setProperty('ringCollectHUD.antialiasing', false)
+scaleObject('ringCollectHUD', 6, 6)
+addLuaSprite('ringCollectHUD', true)
+setObjectCamera('ringCollectHUD', 'other')
+--setProperty('ringCollectHUD.alpha', 0)
+
+makeLuaText('points', "x", 0, 120, 30);
+setTextSize('points', 75);
+addLuaText('points');
+setProperty('points.borderSize', 0)
+setTextFont('points', 'vcrog.ttf')
+setObjectCamera('points', 'camOther');
+--setProperty('points.visible', false)
+
+makeLuaText('pointsTime', "TIME", 0, 25, 125);
+setTextSize('pointsTime', 70);
+addLuaText('pointsTime');
+setProperty('pointsTime.borderSize', 0)
+setTextFont('pointsTime', 'vcrog.ttf')
+setObjectCamera('pointsTime', 'camOther');
+--setProperty('pointsTime.visible', false)
+
+makeLuaText('pointsTimeTxt', "0:00", 0, 230, 125);
+setTextSize('pointsTimeTxt', 70);
+addLuaText('pointsTimeTxt');
+setProperty('pointsTimeTxt.borderSize', 0)
+setTextFont('pointsTimeTxt', 'vcrog.ttf')
+setObjectCamera('pointsTimeTxt', 'camOther');
+--setProperty('pointsTimeTxt.visible', false)
+
+makeLuaText('pointsDebug', "0:00", 0, 230, 200);
+setTextSize('pointsDebug', 70);
+addLuaText('pointsDebug');
+setProperty('pointsDebug.borderSize', 0)
+setTextFont('pointsDebug', 'vcrog.ttf')
+setObjectCamera('pointsDebug', 'camOther');
+--setProperty('pointsDebug.visible', false)
+
+makeLuaSprite('lifeHUD', 'breitbart/gameplaySprites/sonic/lifeIcon', 15, 615)
+--setProperty('lifeHUD.antialiasing', false)
+scaleObject('lifeHUD', 1, 1)
+addLuaSprite('lifeHUD', true)
+setObjectCamera('lifeHUD', 'other')
+--setProperty('lifeHUD.alpha', 0)
+
+makeLuaText('pointsLife', "x5", 0, 150, 625);
+setTextSize('pointsLife', 80);
+addLuaText('pointsLife');
+setProperty('pointsLife.borderSize', 0)
+setTextFont('pointsLife', 'vcrog.ttf')
+setObjectCamera('pointsLife', 'camOther');
+--setProperty('pointsLife.visible', false)
+
+setProperty('sonicMoving.visible', false)
+setProperty('sonicMovingWalk.visible', false)
+end
+
+function spawnObjects()
+objectSpawner = 1
+makeLuaSprite('tile'..objectSpawner, 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 ground tile', 0, 0)
+setProperty('tile'..objectSpawner..'.antialiasing', false)
+scaleObject('tile'..objectSpawner, 1, 1)
+addLuaSprite('tile'..objectSpawner, true)
+setObjectCamera('tile'..objectSpawner, 'other')
+setProperty('tile'..objectSpawner..'.alpha', 0)
 end
 
 -- necessary if you want the normal mouse to show up in things like the chart editor
@@ -136,7 +333,7 @@ function onDestroy()
 end
 
 function onPause()
-	openCustomSubstate('pauseState', true);
+	-- openCustomSubstate('pauseState', true);
 	-- thisShit = {'Overlay1', 'Overlay2', 'Resume', '', '', '', ''}
 	setProperty('pauseMenuOverlay1.alpha', 1)
 	setProperty('pauseMenuOverlay2.alpha', 1)
@@ -169,6 +366,244 @@ function onUpdate()
 		]])
 		doubleCheckIfItDoesntSoundLikeOST = false
 		end
+	end
+	
+	if pressedAnyButtons == true then
+		if keyJustPressed('accept') then
+		runTimer('flashingb', 0.05, 999)
+		runTimer('startGame', 2)
+		runTimer('runSonic', runningSpeed, 9999)
+		pressedAnyButtons = false
+		end
+	end
+	
+	-- Just the debugging for myself, Herox.
+	
+	setTextString("points", "x"..ringCount)
+	setTextString("pointsDebug", debugNum)
+	setProperty('sonicMovingWalk.x', getProperty('sonicMoving.x'))
+	setProperty('sonicMoving2.x', getProperty('sonicMoving.x'))
+	setProperty('sonicMoving3.x', getProperty('sonicMoving.x'))
+	setProperty('sonicBall.x', getProperty('sonicMoving.x'))
+	setProperty('sonicBall2.x', getProperty('sonicMoving.x'))
+	setProperty('sonicMovingWalk.y', getProperty('sonicMoving.y'))
+	setProperty('sonicMoving2.y', getProperty('sonicMoving.y'))
+	setProperty('sonicMoving3.y', getProperty('sonicMoving.y'))
+	setProperty('sonicBall.y', getProperty('sonicMoving.y'))
+	setProperty('sonicBall2.y', getProperty('sonicMoving.y'))
+	setProperty('sonicMovingWalk.flipX', getProperty('sonicMoving.flipX'))
+	setProperty('sonicMoving2.flipX', getProperty('sonicMoving.flipX'))
+	setProperty('sonicMoving3.flipX', getProperty('sonicMoving.flipX'))
+	setProperty('sonicBall.flipX', getProperty('sonicMoving.flipX'))
+	setProperty('sonicBall2.flipX', getProperty('sonicMoving.flipX'))
+	
+	if tenSecondPassed == true then
+	setTextString('pointsTimeTxt', minuteNum..":"..secondNum)
+	else
+	setTextString('pointsTimeTxt', minuteNum..":0"..secondNum)
+	end
+	
+	if canMoveSonic == true then
+		if keyboardPressed('LEFT') then
+		setProperty('sonicMoving.flipX', false)
+		setProperty('sonicMoving.x', getProperty('sonicMoving.x')-5)
+		isOnIdle = false
+		if startGameFix then
+			if isJumped == false then
+			setProperty('sonicMovingWalk.visible', true)
+			setProperty('sonicMoving2.visible', true)
+			setProperty('sonicMoving3.visible', true)
+			setProperty('sonicMoving.visible', false)
+			end
+		end
+		
+		elseif keyboardPressed('RIGHT') then
+		setProperty('sonicMoving.flipX', true)
+		setProperty('sonicMoving.x', getProperty('sonicMoving.x')+5)
+		isOnIdle = false
+		if startGameFix then
+			if isJumped == false then
+			setProperty('sonicMovingWalk.visible', true)
+			setProperty('sonicMoving2.visible', true)
+			setProperty('sonicMoving3.visible', true)
+			setProperty('sonicMoving.visible', false)
+			end
+		end
+		
+		elseif keyboardReleased('LEFT') or keyboardReleased('RIGHT') then
+			if isJumped == false then
+			isOnIdle = true
+			end
+		end
+		
+		if keyboardJustPressed('SPACE') then
+			if isJumped == false then -- checks if breitbart jumped
+			doTweenY('startUp', 'sonicMoving', 268, 0.5, 'sineOut')
+			setProperty('sonicMoving2.visible', false)
+			setProperty('sonicMovingWalk.visible', false)
+			setProperty('sonicMoving3.visible', false)
+			setProperty('sonicMoving.visible', false)
+			setProperty('sonicBall.visible', true)
+			setProperty('sonicBall2.visible', true)
+			jumpCheck = 'up'
+			isJumped = true
+			isOnIdle = false
+			end
+		end
+	
+	if startGameFix then
+		if isOnIdle == true then
+		setProperty('sonicMoving2.visible', false)
+		setProperty('sonicMovingWalk.visible', false)
+		setProperty('sonicMoving3.visible', false)
+		setProperty('sonicMoving.visible', true)
+		else
+		setProperty('sonicMoving.visible', false)
+		end
+	end
+		
+		if getProperty('sonicMoving.x') >= getProperty('ringCollect.x')-250 then
+		setProperty('ringCollect.alpha', 0)
+			if ringCountCheck == false then
+			ringCount = ringCount+1
+			playSound('ring', 1)
+			ringCountCheck = true
+			end
+		end
+		
+		if getProperty('sonicMoving.x') <= 0 then
+		setProperty('sonicMoving.x', 0)
+		overZeroCheck = false
+			if keyboardPressed('LEFT') then
+			cancelTween('startUp')
+			cancelTween('startDowns')
+			end
+			
+			if keyboardReleased('LEFT') then
+			doTweenY('startDowns', 'sonicMoving', 368, 0.5, 'sineIn')
+			end
+			
+		elseif getProperty('sonicMoving.x') >= 0 then
+			if overZeroCheck == false then
+			doTweenY('startDowns', 'sonicMoving', 368, 0.5, 'sineIn')
+			overZeroCheck = true
+			end
+		end
+	end
+end
+
+function onTweenCompleted(tag)
+	if tag == 'startUp' then
+	doTweenY('startDowns', 'sonicMoving', 368, 0.5, 'sineIn')
+	jumpCheck = 'down'
+	end
+	
+	if tag == 'startDowns' then
+	isJumped = false
+	isOnIdle = true
+	setProperty('sonicBall.visible', false)
+	setProperty('sonicBall2.visible', false)
+	end
+	
+	if tag == 'startDown' then
+	isJumped = false
+	isOnIdle = true
+	setProperty('sonicBall.visible', false)
+	setProperty('sonicBall2.visible', false)
+	startGameFix = true
+	end
+end
+
+function onTimerCompleted(tag, loops, loopsLeft)
+	if tag == 'flashingb' then
+		if loopsLeft % 2 == 0 then
+		setProperty('titlescreenStart2.alpha', 0)
+		else
+		setProperty('titlescreenStart2.alpha', 1)
+		end
+	end
+	
+	if tag == 'runSonic' then
+		if loopsLeft % 3 == 0 then
+		setProperty('sonicMovingWalk.alpha', 1)
+		setProperty('sonicMoving2.alpha', 0)
+		setProperty('sonicMoving3.alpha', 0)
+		
+		elseif loopsLeft % 2 == 0 then
+		setProperty('sonicMovingWalk.alpha', 0)
+		setProperty('sonicMoving2.alpha', 1)
+		setProperty('sonicMoving3.alpha', 0)
+		setProperty('sonicBall.alpha', 1)
+		setProperty('sonicBall2.alpha', 0)
+		else
+		setProperty('sonicMovingWalk.alpha', 0)
+		setProperty('sonicMoving2.alpha', 0)
+		setProperty('sonicMoving3.alpha', 1)
+		setProperty('sonicBall.alpha', 0)
+		setProperty('sonicBall2.alpha', 1)
+		end
+	debugNum = debugNum-1
+	end
+	
+	if tag == 'opacity here' then
+	setPropertyFromClass('openfl.Lib', 'application.window.opacity', 1)
+	end
+	
+	if tag == 'open game' then
+	setProperty('titlescreenBoot.alpha', 0)
+	setProperty('titlescreenMain.alpha', 1)
+	setProperty('titlescreenStart.alpha', 1)
+	playSound('funksterGAME/title', 1, 'titleTag')
+	pressedAnyButtons = true
+	end
+	
+	if tag == 'startGame' then
+	cancelTimer('flashingb')
+	setProperty('titlescreenStart.alpha', 0)
+	setProperty('titlescreenStart2.alpha', 1)
+	soundFadeIn('titleTag', 0.0001, 1, 0)
+	runTimer('startedGame', 1.5)
+	end
+	
+	if tag == 'startedGame' then
+	setProperty('titlescreenMain.alpha', 0)
+	setProperty('titlescreenStart.visible', false)
+	setProperty('titlescreenStart2.visible', false)
+	spawnCharacter()
+	canMoveSonic = true
+	isOnIdle = true
+	runTimer('minute', 60)
+	runTimer('second', 1)
+	playSound('funksterGAME/zone', 1, 'zoneTag')
+	end
+	
+	if tag == 'minute' then
+	minuteNum = minuteNum+1
+	runTimer('minute', 60)
+	
+	elseif tag == 'second' then
+	secondNum = secondNum+1
+	runTimer('second', 1)
+	
+	if secondNum == 10 and tenSecondPassed == false then
+	tenSecondPassed = true
+	end
+	
+		if secondNum == 60 then
+		tenSecondPassed = false
+		secondNum = 0
+		end
+	end
+	
+	if tag == 'resume' then
+	restartSong()
+	end
+	
+	if tag == 'aint' then
+	helpEnter = true
+	
+	elseif tag == 'aint v2' then
+	pauseMenuActive = true
 	end
 end
 
@@ -282,18 +717,5 @@ function onCustomSubstateUpdatePost(name)
 		setProperty('pauseMenuHelp.alpha', 1)
 		setProperty('levels.alpha', 1)
 		end
-	end
-end
-
-function onTimerCompleted(tag)
-	if tag == 'resume' then
-	restartSong()
-	end
-	
-	if tag == 'aint' then
-	helpEnter = true
-	
-	elseif tag == 'aint v2' then
-	pauseMenuActive = true
 	end
 end
