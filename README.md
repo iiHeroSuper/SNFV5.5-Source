@@ -9,7 +9,7 @@ Edit this code IF YOU DARE!!
 
 ----------------------------------------------------
 
-# Welcome to Sonic Night Funkin' v6 Source Code (Current Owner's version)!
+# Welcome to Sonic Night Funkin' v5.5 Source Code (Current Owner's version)!
 
 ## Hi, Arie "Herox" Temps here!
 We were originally gonna do an executable mod without Source Code for v5, but as a coder myself (*Herox*), I did a lot for the mod for this and we ran into problems within' lua limitations and errors using `Psych Engine v1.0 Pre-release`. Some functions like "stopSound" wouldn't work in pre-release but it's Psych, what can I do?
