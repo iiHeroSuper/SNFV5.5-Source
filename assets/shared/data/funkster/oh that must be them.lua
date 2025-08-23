@@ -22,6 +22,13 @@ ringCount = 0
 ringCountCheck = false
 startGameFix = false
 
+local ringChecks = {2, 3, 4, 5, 6, 7, 8, 9,
+10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+30, 31, 32}
+local ringCountCheckNum = 2
+walkingDist = 2170
+
 runningSpeed = 0.1
 minuteNum = 0
 secondNum = 0
@@ -179,12 +186,24 @@ setPropertyFromClass('openfl.Lib', 'application.window.opacity', 0)
 end
 
 function spawnCharacter()
+--[[
 makeLuaSprite('bgTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 stage bg', 0, -250)
 setProperty('bgTemp.antialiasing', false)
 scaleObject('bgTemp', 0.75, 0.75)
 addLuaSprite('bgTemp', true)
 setObjectCamera('bgTemp', 'other')
 --setProperty('bgTemp.alpha', 0)
+]]
+
+createInstance('bgTemp', 'flixel.addons.display.FlxBackdrop', {nil,0x01}) 
+loadGraphic('bgTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 stage bg')
+addInstance('bgTemp', true)
+setProperty('bgTemp.antialiasing', false)
+setProperty('bgTemp.y', -250)
+scaleObject('bgTemp', 0.75, 0.75)
+--updateHitbox('bgTemp')
+setObjectCamera('bgTemp', 'other')
+--setObjectOrder("bgTemp", 999)
 
 -- BREITBART SPRITES
 makeLuaSprite('sonicMoving', 'breitbart/gameplaySprites/sonic/individual frames/walkframe1', 508, 208)
@@ -238,11 +257,28 @@ setObjectCamera('sonicBall2', 'other')
 -- setProperty('sonicBall.flipX', true)
 -- BREITBART SPRITES
 
-makeLuaSprite('ringCollect', 'breitbart/gameplaySprites/ring/spin1', 1000, 450)
+makeLuaSprite('ringCollect', 'breitbart/gameplaySprites/ring/spin1', walkingDist, 450)
 setProperty('ringCollect.antialiasing', false)
 scaleObject('ringCollect', 5, 5)
 addLuaSprite('ringCollect', true)
 setObjectCamera('ringCollect', 'other')
+--setProperty('ringCollect.alpha', 0)
+
+for _,counts in ipairs(ringChecks) do
+walkingDist = walkingDist+350
+makeLuaSprite('ringCollect'..counts, 'breitbart/gameplaySprites/ring/spin1', walkingDist, 450)
+setProperty('ringCollect'..counts..'.antialiasing', false)
+scaleObject('ringCollect'..counts, 5, 5)
+addLuaSprite('ringCollect'..counts, true)
+setObjectCamera('ringCollect'..counts, 'other')
+--setProperty('ringCollect.alpha', 0)
+end
+
+makeLuaSprite('ringCollectFinal', 'breitbart/gameplaySprites/ring/spin1', walkingDist+500, 150) -- HOW
+setProperty('ringCollectFinal.antialiasing', false)
+scaleObject('ringCollectFinal', 18, 18)
+addLuaSprite('ringCollectFinal', true)
+setObjectCamera('ringCollectFinal', 'other')
 --setProperty('ringCollect.alpha', 0)
 
 makeLuaSprite('black1', 'black1', getProperty('ringCollect.x'), getProperty('ringCollect.y'));
@@ -251,12 +287,23 @@ addLuaSprite('black1', true);
 scaleObject('black1', 5, 5)
 setObjectCamera('black1', 'other');
 
+--[[
 makeLuaSprite('tileTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 ground tile', 0, 625)
 setProperty('tileTemp.antialiasing', false)
 scaleObject('tileTemp', 5, 0.5)
 addLuaSprite('tileTemp', true)
 setObjectCamera('tileTemp', 'other')
 --setProperty('tileTemp.alpha', 0)
+]]
+
+createInstance('tileTemp', 'flixel.addons.display.FlxBackdrop', {nil,0x01}) 
+loadGraphic('tileTemp', 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 ground tile')
+addInstance('tileTemp', true)
+setProperty('tileTemp.antialiasing', false)
+setProperty('tileTemp.y', 625)
+scaleObject('tileTemp', 0.5, 0.5)
+--updateHitbox('tileTemp')
+setObjectCamera('tileTemp', 'other')
 
 makeLuaSprite('ringCollectHUD', 'breitbart/gameplaySprites/ring/spin1', 15, 15)
 setProperty('ringCollectHUD.antialiasing', false)
@@ -289,6 +336,7 @@ setTextFont('pointsTimeTxt', 'vcrog.ttf')
 setObjectCamera('pointsTimeTxt', 'camOther');
 --setProperty('pointsTimeTxt.visible', false)
 
+--[[
 makeLuaText('pointsDebug', "0:00", 0, 230, 200);
 setTextSize('pointsDebug', 70);
 addLuaText('pointsDebug');
@@ -296,6 +344,16 @@ setProperty('pointsDebug.borderSize', 0)
 setTextFont('pointsDebug', 'vcrog.ttf')
 setObjectCamera('pointsDebug', 'camOther');
 --setProperty('pointsDebug.visible', false)
+]]
+
+makeLuaText('pointsDebugFinal', "BIG RING CHECKED!!!!", 0, 230, 500);
+setTextSize('pointsDebugFinal', 50);
+addLuaText('pointsDebugFinal');
+setProperty('pointsDebugFinal.borderSize', 0)
+setTextFont('pointsDebugFinal', 'vcrog.ttf')
+setObjectCamera('pointsDebugFinal', 'camOther');
+setProperty('pointsDebugFinal.alpha', 0)
+--setProperty('pointsDebugFinal.visible', false)
 
 makeLuaSprite('lifeHUD', 'breitbart/gameplaySprites/sonic/lifeIcon', 15, 615)
 --setProperty('lifeHUD.antialiasing', false)
@@ -312,18 +370,11 @@ setTextFont('pointsLife', 'vcrog.ttf')
 setObjectCamera('pointsLife', 'camOther');
 --setProperty('pointsLife.visible', false)
 
+makeLuaSprite('walkingPos', nil)
+setProperty('walkingPos.x', 508)
+
 setProperty('sonicMoving.visible', false)
 setProperty('sonicMovingWalk.visible', false)
-end
-
-function spawnObjects()
-objectSpawner = 1
-makeLuaSprite('tile'..objectSpawner, 'breitbart/gameplaySprites/rapzoneA01/RAPZONEA01 ground tile', 0, 0)
-setProperty('tile'..objectSpawner..'.antialiasing', false)
-scaleObject('tile'..objectSpawner, 1, 1)
-addLuaSprite('tile'..objectSpawner, true)
-setObjectCamera('tile'..objectSpawner, 'other')
-setProperty('tile'..objectSpawner..'.alpha', 0)
 end
 
 -- necessary if you want the normal mouse to show up in things like the chart editor
@@ -333,7 +384,9 @@ function onDestroy()
 end
 
 function onPause()
-	-- openCustomSubstate('pauseState', true);
+	if canOpenCustomPause then
+	openCustomSubstate('pauseState', true);
+	end
 	-- thisShit = {'Overlay1', 'Overlay2', 'Resume', '', '', '', ''}
 	setProperty('pauseMenuOverlay1.alpha', 1)
 	setProperty('pauseMenuOverlay2.alpha', 1)
@@ -380,7 +433,7 @@ function onUpdate()
 	-- Just the debugging for myself, Herox.
 	
 	setTextString("points", "x"..ringCount)
-	setTextString("pointsDebug", debugNum)
+	setTextString("pointsDebug", getProperty('walkingPos.x'))
 	setProperty('sonicMovingWalk.x', getProperty('sonicMoving.x'))
 	setProperty('sonicMoving2.x', getProperty('sonicMoving.x'))
 	setProperty('sonicMoving3.x', getProperty('sonicMoving.x'))
@@ -407,6 +460,22 @@ function onUpdate()
 		if keyboardPressed('LEFT') then
 		setProperty('sonicMoving.flipX', false)
 		setProperty('sonicMoving.x', getProperty('sonicMoving.x')-5)
+		setProperty('walkingPos.x', getProperty('walkingPos.x')-1)
+			if getProperty('walkingPos.x') >= 1 then
+			setProperty('tileTemp.x', getProperty('tileTemp.x')+5)
+			setProperty('bgTemp.x', getProperty('bgTemp.x')+4)
+			elseif getProperty('walkingPos.x') <= 0 then
+			setProperty('walkingPos.x', 0)
+			end
+			
+			if getProperty('walkingPos.x') >= 700 then
+			setProperty('ringCollect.x', getProperty('ringCollect.x')+5)
+			setProperty('ringCollectFinal.x', getProperty('ringCollectFinal.x')+5)
+				for i = 2,32 do
+				setProperty('ringCollect'..i..'.x', getProperty('ringCollect'..i..'.x')+5)
+				end
+			end
+			--end
 		isOnIdle = false
 		if startGameFix then
 			if isJumped == false then
@@ -420,6 +489,16 @@ function onUpdate()
 		elseif keyboardPressed('RIGHT') then
 		setProperty('sonicMoving.flipX', true)
 		setProperty('sonicMoving.x', getProperty('sonicMoving.x')+5)
+		setProperty('walkingPos.x', getProperty('walkingPos.x')+1)
+		setProperty('tileTemp.x', getProperty('tileTemp.x')-5)
+		setProperty('bgTemp.x', getProperty('bgTemp.x')-4)
+			if getProperty('walkingPos.x') >= 700 then
+			setProperty('ringCollect.x', getProperty('ringCollect.x')-5)
+			setProperty('ringCollectFinal.x', getProperty('ringCollectFinal.x')-5)
+				for i = 2,32 do
+				setProperty('ringCollect'..i..'.x', getProperty('ringCollect'..i..'.x')-5)
+				end
+			end
 		isOnIdle = false
 		if startGameFix then
 			if isJumped == false then
@@ -462,17 +541,63 @@ function onUpdate()
 		end
 	end
 		
+	if getProperty('walkingPos.x') >= 700 then
 		if getProperty('sonicMoving.x') >= getProperty('ringCollect.x')-250 then
 		setProperty('ringCollect.alpha', 0)
 			if ringCountCheck == false then
 			ringCount = ringCount+1
-			playSound('ring', 1)
+			playSound('ring', 0.75)
 			ringCountCheck = true
 			end
 		end
+	
+	-- I'm so sorry, I can't even get it right.
+		for i = 2, 32 do
+			if getProperty('sonicMoving.x') >= getProperty('ringCollect'..i..'.x')-250 then
+			setProperty('ringCollect'..i..'.alpha', 0)
+				if ringCountCheckNum == i then
+				ringCount = ringCount+1
+				ringCountCheckNum = ringCountCheckNum+1
+				playSound('ring', 0.75)
+				end
+			end
+		end
 		
+		if getProperty('sonicMoving.x') >= getProperty('ringCollectFinal.x') then
+		--setProperty('pointsDebugFinal.alpha', 1)
+		soundFadeIn('zoneTag', 0.0001, 1, 0)
+		playSound('funksterGAME/scream', 0.75)
+		canMoveSonic = false
+		setProperty('sonicMovingWalk.visible', false)
+		setProperty('sonicMoving2.visible', false)
+		setProperty('sonicMoving3.visible', false)
+		setProperty('sonicMoving.visible', false)
+		setProperty('ringCollect.visible', false)
+		setProperty('tileTemp.visible', false)
+		setProperty('bgTemp.visible', false)
+		setProperty('sonicBall.visible', false)
+		setProperty('sonicBall2.visible', false)
+		setProperty('points.visible', false)
+		setProperty('pointsTime.visible', false)
+		setProperty('pointsTimeTxt.visible', false)
+		setProperty('pointsLife.visible', false)
+		setProperty('lifeHUD.visible', false)
+		setProperty('ringCollectHUD.visible', false)
+		setProperty('ringCollectFinal.visible', false)
+		makeLuaSprite('black', '', 0, 0)
+		makeGraphic('black', screenWidth, screenHeight, '000000')
+		setObjectCamera('black', 'other')
+		addLuaSprite('black', true)
+		runTimer('eh', 4)
+			for i = 2, 32 do
+			setProperty('ringCollect'..i..'.visible', false)
+			end
+		end
+	end
+	
 		if getProperty('sonicMoving.x') <= 0 then
 		setProperty('sonicMoving.x', 0)
+		setProperty('walkingPos.x', getProperty('walkingPos.x'))
 		overZeroCheck = false
 			if keyboardPressed('LEFT') then
 			cancelTween('startUp')
@@ -488,6 +613,12 @@ function onUpdate()
 			doTweenY('startDowns', 'sonicMoving', 368, 0.5, 'sineIn')
 			overZeroCheck = true
 			end
+		end
+		if getProperty('sonicMoving.x') >= 508 then
+		setProperty('sonicMoving.x', 508)
+		
+		elseif getProperty('walkingPos.x') >= 100 then
+		setProperty('sonicMoving.x', 508)
 		end
 	end
 end
@@ -542,7 +673,6 @@ function onTimerCompleted(tag, loops, loopsLeft)
 		setProperty('sonicBall.alpha', 0)
 		setProperty('sonicBall2.alpha', 1)
 		end
-	debugNum = debugNum-1
 	end
 	
 	if tag == 'opacity here' then
@@ -593,6 +723,26 @@ function onTimerCompleted(tag, loops, loopsLeft)
 		tenSecondPassed = false
 		secondNum = 0
 		end
+	end
+	
+	if tag == 'eh' then
+	playSound('funksterGAME/breitbartStarting', 1)
+	runTimer('ehh', 0.6)
+	end
+	
+	if tag == 'ehh' then
+	playSound('funksterGAME/breitbartStarting', 1)
+	runTimer('ehhh', 0.6)
+	end
+	
+	if tag == 'ehhh' then
+	playSound('funksterGAME/breitbartStarting', 1)
+	runTimer('start song', 0.5)
+	end
+	
+	if tag == 'start song' then
+	startCountdown()
+	canOpenCustomPause = true
 	end
 	
 	if tag == 'resume' then
