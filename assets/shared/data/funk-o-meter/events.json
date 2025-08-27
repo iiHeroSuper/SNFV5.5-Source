@@ -1,79 +1,479 @@
 {
-	"song": {
-		"speed": 3.2,
-		"stage": "cybercity",
-		"player1": "bf-cybercity",
-		"player2": "cyberpissed",
-		"player3": null,
-		"events": [
+	"events": [
+		[
+			25650,
 			[
-				27600,
-				[
-					[
-						"Change Character",
-						"1",
-						"cybers_hell"
-					]
-				]
-			],
-			[
-				28800,
-				[
-					[
-						"Add Camera Zoom",
-						"0",
-						"0"
-					]
-				]
-			],
-			[
-				83100,
-				[
-					[
-						"Change Character",
-						"1",
-						"cyberpissed"
-					]
-				]
-			],
-			[
-				94050,
-				[
-					[
-						"Change Character",
-						"1",
-						"cybershell"
-					]
-				]
-			],
-			[
-				95400,
-				[
-					[
-						"Change Character",
-						"1",
-						"cyberpissed"
-					]
-				]
-			],
-			[
-				177900,
-				[
-					[
-						"Add Camera Zoom",
-						"1111111111",
-						"0"
-					]
-				]
+				["", "subtitle", "i"]
 			]
 		],
-		"notes": [],
-		"splashSkin": "noteSplashes",
-		"validScore": false,
-		"gfVersion": "gf-no-zest",
-		"bpm": 200,
-		"arrowSkin": "",
-		"needsVoices": true,
-		"song": "Cunt-o-meter"
-	}
+		[
+			25800,
+			[
+				["", "subtitle", "i did"]
+			]
+		],
+		[
+			25875,
+			[
+				["", "subtitle", "i didn't"]
+			]
+		],
+		[
+			26100,
+			[
+				["", "subtitle", "i didn't want"]
+			]
+		],
+		[
+			26325,
+			[
+				["", "subtitle", "i didn't want to"]
+			]
+		],
+		[
+			26400,
+			[
+				["", "subtitle", "i didn't want to do"]
+			]
+		],
+		[
+			26625,
+			[
+				["", "subtitle", "i didn't want to do this"]
+			]
+		],
+		[
+			27150,
+			[
+				["", "subtitle", "you"]
+			]
+		],
+		[
+			27600,
+			[
+				["Change Character", "1", "cybers_hell"],
+				["", "subtitle", "you made"]
+			]
+		],
+		[
+			27900,
+			[
+				["", "subtitle", "you made me"]
+			]
+		],
+		[
+			28125,
+			[
+				["", "subtitle", "you made me do"]
+			]
+		],
+		[
+			28350,
+			[
+				["", "subtitle", "you made me do this"]
+			]
+		],
+		[
+			28800,
+			[
+				["", "subtitle", ""],
+				["Add Camera Zoom", "0", "0"]
+			]
+		],
+		[
+			83100,
+			[
+				["Change Character", "1", "cyberpissed"],
+				["", "subtitle", "dear"]
+			]
+		],
+		[
+			83400,
+			[
+				["", "subtitle", "dear god"]
+			]
+		],
+		[
+			84600,
+			[
+				["", "subtitle", "dear"]
+			]
+		],
+		[
+			85200,
+			[
+				["", "subtitle", "dear fu"]
+			]
+		],
+		[
+			85425,
+			[
+				["", "subtitle", "dear fucking"]
+			]
+		],
+		[
+			85650,
+			[
+				["", "subtitle", "dear fucking god"]
+			]
+		],
+		[
+			86250,
+			[
+				["", "subtitle", "this"]
+			]
+		],
+		[
+			86400,
+			[
+				["", "subtitle", "this mu"]
+			]
+		],
+		[
+			86550,
+			[
+				["", "subtitle", "this music"]
+			]
+		],
+		[
+			86850,
+			[
+				["", "subtitle", "this music sucks"]
+			]
+		],
+		[
+			87900,
+			[
+				["", "subtitle", "it"]
+			]
+		],
+		[
+			88200,
+			[
+				["", "subtitle", "it fuck"]
+			]
+		],
+		[
+			88425,
+			[
+				["", "subtitle", "it fucking"]
+			]
+		],
+		[
+			88725,
+			[
+				["", "subtitle", "it fucking sucks"]
+			]
+		],
+		[
+			89100,
+			[
+				["", "subtitle", "it fucking sucks dude"]
+			]
+		],
+		[
+			89700,
+			[
+				["", "subtitle", "it"]
+			]
+		],
+		[
+			90000,
+			[
+				["", "subtitle", "it fuck"]
+			]
+		],
+		[
+			90225,
+			[
+				["", "subtitle", "it fucking"]
+			]
+		],
+		[
+			90600,
+			[
+				["", "subtitle", "it fucking sucks"]
+			]
+		],
+		[
+			91425,
+			[
+				["", "subtitle", "re"]
+			]
+		],
+		[
+			91500,
+			[
+				["", "subtitle", "remember"]
+			]
+		],
+		[
+			91650,
+			[
+				["", "subtitle", "remember the"]
+			]
+		],
+		[
+			91875,
+			[
+				["", "subtitle", "remember the boss"]
+			]
+		],
+		[
+			92175,
+			[
+				["", "subtitle", "remember the boss mu"]
+			]
+		],
+		[
+			92325,
+			[
+				["", "subtitle", "remember the boss music"]
+			]
+		],
+		[
+			92550,
+			[
+				["", "subtitle", "from"]
+			]
+		],
+		[
+			92700,
+			[
+				["", "subtitle", "from so"]
+			]
+		],
+		[
+			92850,
+			[
+				["", "subtitle", "from sonic"]
+			]
+		],
+		[
+			93000,
+			[
+				["", "subtitle", "from sonic 3?"]
+			]
+		],
+		[
+			94050,
+			[
+				["Change Character", "1", "cybershell"],
+				["", "subtitle", "it"]
+			]
+		],
+		[
+			94125,
+			[
+				["", "subtitle", "it was"]
+			]
+		],
+		[
+			94200,
+			[
+				["", "subtitle", "it was ac"]
+			]
+		],
+		[
+			94575,
+			[
+				["", "subtitle", "it was actua"]
+			]
+		],
+		[
+			94650,
+			[
+				["", "subtitle", "it was actually"]
+			]
+		],
+		[
+			94800,
+			[
+				["", "subtitle", "it was actually good"]
+			]
+		],
+		[
+			95400,
+			[
+				["Change Character", "1", "cyberpissed"]
+			]
+		],
+		[
+			96000,
+			[
+				["", "subtitle", ""]
+			]
+		],
+		[
+			105600,
+			[
+				["Change Character", "1", "cybershell"]
+			]
+		],
+		[
+			124800,
+			[
+				["Change Character", "1", "cybers_hell"]
+			]
+		],
+		[
+			127200,
+			[
+				["Change Character", "1", "cybers_hell"]
+			]
+		],
+		[
+			142500,
+			[
+				["", "subtitle", "what?"]
+			]
+		],
+		[
+			143100,
+			[
+				["Change Character", "1", "cyberpissed"]
+			]
+		],
+		[
+			143400,
+			[
+				["Change Character", "1", "cyberpissed"],
+				["", "subtitle", "fuck"]
+			]
+		],
+		[
+			143625,
+			[
+				["", "subtitle", "fuck you"]
+			]
+		],
+		[
+			144000,
+			[
+				["", "subtitle", ""]
+			]
+		],
+		[
+			162600,
+			[
+				["Change Character", "1", "cybershell"]
+			]
+		],
+		[
+			169500,
+			[
+				["", "subtitle", "i"]
+			]
+		],
+		[
+			169650,
+			[
+				["", "subtitle", "i did"]
+			]
+		],
+		[
+			169725,
+			[
+				["", "subtitle", "i didn't"]
+			]
+		],
+		[
+			169800,
+			[
+				["Change Character", "1", "cybershell"],
+				["", "subtitle", "i didn't rea"]
+			]
+		],
+		[
+			170025,
+			[
+				["", "subtitle", "i didn't realize"]
+			]
+		],
+		[
+			170250,
+			[
+				["", "subtitle", "i didn't realize that"]
+			]
+		],
+		[
+			170325,
+			[
+				["", "subtitle", "i didn't realize that was"]
+			]
+		],
+		[
+			170550,
+			[
+				["", "subtitle", "i didn't realize that was sum"]
+			]
+		],
+		[
+			170625,
+			[
+				["", "subtitle", "i didn't realize that was summon"]
+			]
+		],
+		[
+			170700,
+			[
+				["", "subtitle", "i didn't realize that was summoning"]
+			]
+		],
+		[
+			171000,
+			[
+				["", "subtitle", "i didn't realize that was summoning this"]
+			]
+		],
+		[
+			171300,
+			[
+				["", "subtitle", "so"]
+			]
+		],
+		[
+			171525,
+			[
+				["", "subtitle", "sonic"]
+			]
+		],
+		[
+			171750,
+			[
+				["", "subtitle", "sonic 4"]
+			]
+		],
+		[
+			172050,
+			[
+				["", "subtitle", "sonic 4 de"]
+			]
+		],
+		[
+			172200,
+			[
+				["", "subtitle", "sonic 4 defense"]
+			]
+		],
+		[
+			172500,
+			[
+				["", "subtitle", "sonic 4 defense force"]
+			]
+		],
+		[
+			173100,
+			[
+				["", "subtitle", ""]
+			]
+		],
+		[
+			177900,
+			[
+				["Add Camera Zoom", "1111111111", "0"]
+			]
+		]
+	],
+	"format": "psych_v1"
 }
