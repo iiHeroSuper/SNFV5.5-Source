@@ -1,5 +1,5 @@
 composer = "diskkunt" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "Long John Baldry, Jim Cummings, Jaleel White, Gary Owens, Russi Taylor" -- This goes for each song, you have to adjust the names.

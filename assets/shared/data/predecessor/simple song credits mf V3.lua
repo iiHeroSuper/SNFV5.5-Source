@@ -1,5 +1,5 @@
 composer = "Desk Lamp & ZesCrew2" -- This goes for each song, you have to adjust the names.
-charter = "Clefanight & Syn" -- This goes for each song, you have to adjust the names.
+charter = "Clefanight & redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "Chocomint, ZesCrew2, RAPIDTANK2" -- This goes for each song, you have to adjust the names.
 animator = "Chocomint, ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "yungtron, ZesCrew2" -- This goes for each song, you have to adjust the names.
