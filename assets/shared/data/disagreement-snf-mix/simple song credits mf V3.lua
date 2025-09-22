@@ -1,5 +1,5 @@
 composer = "nerd_emoji" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "Cybershell, yungtron" -- This goes for each song, you have to adjust the names.

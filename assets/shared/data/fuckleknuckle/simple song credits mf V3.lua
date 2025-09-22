@@ -1,5 +1,5 @@
 composer = "not a real penguin" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "clefanight, leanster, ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "SillyPebblez" -- This goes for each song, you have to adjust the names.
 va = "Dan Green, yungtron" -- This goes for each song, you have to adjust the names.

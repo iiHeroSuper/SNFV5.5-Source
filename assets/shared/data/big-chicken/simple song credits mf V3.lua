@@ -1,5 +1,5 @@
 composer = "ZesCrew2" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "Dan Paladin, ZesCrew2, Fiddle" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "Dan Paladin, yungtron" -- This goes for each song, you have to adjust the names.

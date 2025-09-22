@@ -1,5 +1,5 @@
 composer = "CyzmiX" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "Herox" -- This goes for each song, you have to adjust the names.
 artist = "Chocomint, ZesCrew2, Lilac" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "ZesCrew2, yungtron" -- This goes for each song, you have to adjust the names.
