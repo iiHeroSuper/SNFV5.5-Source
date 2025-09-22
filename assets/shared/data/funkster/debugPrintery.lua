@@ -1,7 +1,7 @@
 function onEvent(name, v1, v2)
 	if name == '' then
 		if v1 == 'show launch' then
-		runTimer('this and that', 0.0001)
+		runTimer('this and that', 0.05)
 		-- when the event is triggered, it'll add more than one.
 		-- so I thought adding as a timer would work as one.
 		end

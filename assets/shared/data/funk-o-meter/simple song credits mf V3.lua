@@ -1,5 +1,5 @@
 composer = "ZesCrew2" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "Herox" -- This goes for each song, you have to adjust the names.
 artist = "MetalAI, clefanight" -- This goes for each song, you have to adjust the names.
 animator = "MetalAI, clefanight" -- This goes for each song, you have to adjust the names.
 va = "Cybershell, yungtron" -- This goes for each song, you have to adjust the names.
