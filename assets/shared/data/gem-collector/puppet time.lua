@@ -46,15 +46,20 @@ scaleObject('puppetGHOST', 1, 1)
 setObjectCamera('puppetGHOST', 'other')
 addLuaSprite('puppetGHOST', true)
 setProperty('puppetGHOST.alpha', 0.5) -- for the matching.
-
-makeLuaText('points', "X: whar\nY: whar", 0, 100, 100);
-setTextSize('points', 50);
-addLuaText('points');
-setObjectCamera('points', 'camOther');
 ]]
+
+makeLuaText('scoreText', "Score:0-Misses:0", screenWidth, 0, getProperty('scoreTxt.y'));
+setTextSize('scoreText', 40);
+addLuaText('scoreText');
+setObjectCamera('scoreText', 'camHUD');
+setTextFont('scoreText', "beheme.ttf")
+screenCenter('scoreText', 'X')
+setProperty('scoreTxt.visible', false)
 end
 
 function onUpdate()
+	setTextString('scoreText', "Score:"..score.."-Misses:"..misses)
+	
 	if getProperty('puppet.animation.curAnim.name') == 'hi' and getProperty('puppet.animation.curAnim.finished') then
 	objectPlayAnimation('puppet', "loop")
 	setProperty('puppet.x', 250)

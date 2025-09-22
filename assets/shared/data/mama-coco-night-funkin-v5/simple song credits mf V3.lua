@@ -1,5 +1,5 @@
 composer = "Top 10 Awesome" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "Hero the X" -- This goes for each song, you have to adjust the names.
 artist = "Disney, ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "Donut, ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "Ana Ofelia Murguía, yungtron" -- This goes for each song, you have to adjust the names.

@@ -1,5 +1,5 @@
 composer = "milkypossum" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "Anima52719, jj_filler, ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "milkypossum" -- This goes for each song, you have to adjust the names.
