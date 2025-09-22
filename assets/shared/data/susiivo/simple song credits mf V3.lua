@@ -1,5 +1,5 @@
 composer = "you know who it is, i don't even have to say it" -- This goes for each song, you have to adjust the names.
-charter = "Syn" -- This goes for each song, you have to adjust the names.
+charter = "redacted former dev" -- This goes for each song, you have to adjust the names.
 artist = "Anima52719, jj_filler, ZesCrew2" -- This goes for each song, you have to adjust the names.
 animator = "ZesCrew2" -- This goes for each song, you have to adjust the names.
 va = "Steve Harwell" -- This goes for each song, you have to adjust the names.
