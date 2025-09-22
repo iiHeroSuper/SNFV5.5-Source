@@ -24,6 +24,9 @@ function onBeatHit()
 			elseif songName == "Robotnik ii" then
 			doTweenY('playerIconTag', 'iconP1', 725-iconHeight, 0.15, 'circOut')
 			iconBounce = 2
+			
+			elseif songName == 'mama coco night funkin v5' then
+			
 			else
 			doTweenY('playerIconTag', 'iconP1', 565.8-iconHeight, 0.15, 'circOut') -- 565.8
 			iconBounce = 2
@@ -41,6 +44,9 @@ function onBeatHit()
 			elseif songName == "Robotnik ii" then
 			doTweenY('playerIconTag', 'iconP1', -150-iconHeight, 0.15, 'circOut')
 			iconBounce = 2
+			
+			elseif songName == 'mama coco night funkin v5' then
+			
 			else
 			doTweenY('playerIconTag', 'iconP1', 4.2-iconHeight, 0.15, 'circOut') -- 4.2
 			iconBounce = 2
@@ -60,6 +66,9 @@ function onBeatHit()
 			elseif songName == "Robotnik ii" then
 			doTweenY('opponentIconTag', 'iconP2', 725-iconHeight, 0.15, 'circOut')
 			iconBounce = 1
+			
+			elseif songName == 'mama coco night funkin v5' then
+			
 			else
 			doTweenY('opponentIconTag', 'iconP2', 565.8-iconHeight, 0.15, 'circOut')
 			iconBounce = 1
@@ -77,6 +86,9 @@ function onBeatHit()
 			elseif songName == "Robotnik ii" then
 			doTweenY('opponentIconTag', 'iconP2', -150-iconHeight, 0.15, 'circOut')
 			iconBounce = 1
+			
+			elseif songName == 'mama coco night funkin v5' then
+			
 			else
 			doTweenY('opponentIconTag', 'iconP2', 4.2-iconHeight, 0.15, 'circOut')
 			iconBounce = 1
